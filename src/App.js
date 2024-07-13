@@ -109,9 +109,10 @@ class App extends Component {
           arpeggioChangeFn={event => this.handleArpeggioSelection(event)}
           nameFormatter={name => this.formatNameForDisplay(name)}
         />
+        <div style={{flexDirection:"column" , display:"flex" , justifyContent:"center" , alignItems:"center" , padding:10}}>
         <svg id="svg"></svg>
 
-
+        </div>
       </div>
     );
   }
