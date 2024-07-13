@@ -1,14 +1,12 @@
+/* General Styles */
 .App {
   text-align: center;
-  background-color: "black";
-
 }
 
 #svg {
   height: 1100px;
   width: 1100px;
   padding-left: 15px;
-
 }
 
 .select-container {
@@ -23,4 +21,55 @@
 
 .dropdown-label {
   margin-right: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Styles for tablets and smaller devices */
+  #svg {
+    height: 1100px;
+    width: 800px;
+    padding-left: 10px;
+  }
+
+  .select-container {
+    padding: 8px;
+  }
+
+  .select-container select {
+    margin-left: 8px;
+    padding: 1px;
+    border-radius: 4px;
+  }
+
+  .dropdown-label {
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for mobile devices */
+  #svg {
+    height: 1100px;
+    width: 400px;
+    padding-left: 5px;
+  }
+
+  .select-container {
+    padding: 5px;
+  }
+
+  .select-container select {
+    margin-left: 5px;
+    padding: 1px;
+    border-radius: 4px;
+  }
+
+  .dropdown-label {
+    margin-right: 2px;
+  }
+
+  .App {
+    padding: 10px;
+  }
 }
