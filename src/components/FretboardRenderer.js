@@ -10,8 +10,8 @@ const FRET_COUNT = 13,
   STRING_SPACING = 70,
   STRING_WIDTH = 4,
   FRET_WIDTH = 6,
-  FRET_START_POINT_X = STRING_START_POINT_X + FRET_WIDTH / 2,
-  FRET_START_POINT_Y = STRING_START_POINT_Y,
+  FRET_START_POINT_X = STRING_START_POINT_X,
+  FRET_START_POINT_Y = STRING_START_POINT_Y + FRET_WIDTH / 2,
   FRET_SPACING = 80,
   STRING_LENGTH = FRET_COUNT * (FRET_SPACING + 1),
   FRET_HEIGHT = STRING_COUNT * (STRING_SPACING - 1) - 32;
@@ -70,14 +70,14 @@ class FretboardRenderer {
 
   _drawStrings() {
     for (var i = 0; i < STRING_COUNT; i++) {
-      var yPosition = STRING_START_POINT_Y + i * STRING_SPACING;
-      this._drawStringLine(yPosition);
-      this._addStringLabel(yPosition, STRING_TUNINGS[i].note);
+      var xPosition = STRING_START_POINT_X + i * STRING_SPACING;
+      this._drawStringLine(xPosition);
+      this._addStringLabel(xPosition, STRING_TUNINGS[i].note);
     }
   }
 
-  _drawStringLine(yPosition) {
-    var stringLine = this.snapInstance.line(STRING_START_POINT_X, yPosition, STRING_LENGTH, yPosition);
+  _drawStringLine(xPosition) {
+    var stringLine = this.snapInstance.line(xPosition, STRING_START_POINT_Y, xPosition, STRING_START_POINT_Y + STRING_LENGTH);
     stringLine.attr({
       stroke: "black",
       strokeWidth: STRING_WIDTH
@@ -85,9 +85,9 @@ class FretboardRenderer {
     return stringLine;
   }
 
-  _addStringLabel(yPosition, labelText) {
+  _addStringLabel(xPosition, labelText) {
     const LABEL_OFFSET = 7;
-    var stringLabel = this.snapInstance.text(0, yPosition + LABEL_OFFSET, labelText);
+    var stringLabel = this.snapInstance.text(xPosition - LABEL_OFFSET, 15, labelText);
     stringLabel.attr({
       fontWeight: "bold",
       fontSize: "1.5em"
@@ -96,13 +96,13 @@ class FretboardRenderer {
 
   _drawFrets() {
     for (var j = 0; j < FRET_COUNT; j++) {
-      var xPosition = FRET_START_POINT_X + j * FRET_SPACING;
-      this._drawFretLine(xPosition);
+      var yPosition = FRET_START_POINT_Y + j * FRET_SPACING;
+      this._drawFretLine(yPosition);
     }
   }
 
-  _drawFretLine(xPosition) {
-    var fret = this.snapInstance.line(xPosition, FRET_START_POINT_Y, xPosition, FRET_HEIGHT);
+  _drawFretLine(yPosition) {
+    var fret = this.snapInstance.line(FRET_START_POINT_X, yPosition, FRET_HEIGHT, yPosition);
     fret.attr({
       stroke: "black",
       strokeWidth: FRET_WIDTH
@@ -112,11 +112,11 @@ class FretboardRenderer {
   _drawPositionMarkers() {
     [3, 5, 7, 9, 12].forEach(position => {
       if (position === 12) {
-        this._drawPositionMarker(position * FRET_SPACING - 7, FRET_HEIGHT / 3 + 2 * STRING_WIDTH + 2);
-        this._drawPositionMarker(position * FRET_SPACING - 7, 2 * FRET_HEIGHT / 3 + 4 * STRING_WIDTH + 4);
+        this._drawPositionMarker(FRET_HEIGHT / 3 + 2 * STRING_WIDTH + 2, position * FRET_SPACING - 7);
+        this._drawPositionMarker(2 * FRET_HEIGHT / 3 + 4 * STRING_WIDTH + 4, position * FRET_SPACING - 7);
       }
       else {
-        this._drawPositionMarker(position * FRET_SPACING - 7, FRET_HEIGHT / 2 + 3 * STRING_WIDTH + 2);
+        this._drawPositionMarker(FRET_HEIGHT / 2 + 3 * STRING_WIDTH + 2, position * FRET_SPACING - 7);
       }
     });
   }
@@ -153,8 +153,8 @@ class FretboardRenderer {
   _drawNoteMarker(fretPosition, stringNumber, scaleIntervalElement) {
     const POSITION_MARKER_RADIUS = 15,
       STRING_NUMBER_ADJUSTMENT = (STRING_COUNT - stringNumber) * STRING_SPACING,
-      X_POSITION = fretPosition * FRET_SPACING + FRET_START_POINT_X,
-      Y_POSITION = FRET_HEIGHT - STRING_WIDTH / 2 - STRING_NUMBER_ADJUSTMENT;
+      Y_POSITION = fretPosition * FRET_SPACING + FRET_START_POINT_Y,
+      X_POSITION = STRING_START_POINT_X + STRING_NUMBER_ADJUSTMENT;
 
     var marker = this.snapInstance.circle(X_POSITION, Y_POSITION, POSITION_MARKER_RADIUS);
     marker.attr({

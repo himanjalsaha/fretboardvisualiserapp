@@ -1,16 +1,30 @@
 .sequence-select-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.scale-family-dropdown.ui.selection.dropdown {
-  min-width: 11em;
+.select-container {
+  flex: 1 1 auto;
+  margin: 10px;
+  min-width: 250px;
 }
 
-.scale-dropdown.ui.selection.dropdown {
-  min-width: 13em;
+.dropdown-label {
+  display: block;
+  margin-bottom: 5px;
 }
 
+.scale-family-dropdown.ui.selection.dropdown,
+.scale-dropdown.ui.selection.dropdown,
 .arpeggio-dropdown.ui.selection.dropdown {
-  min-width: 12em;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .select-container {
+    min-width: 100%;
+  }
 }

@@ -90,10 +90,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header
-          currentRoot={this.state.currentRoot}
-          currentSequenceName={this.state.currentSequenceName}
-        />
+    
         <TopControlGroup
           currentRoot={this.state.currentRoot}
           rootChangeFn={event => this.handleRootSelection(event)}
@@ -112,7 +109,10 @@ class App extends Component {
           arpeggioChangeFn={event => this.handleArpeggioSelection(event)}
           nameFormatter={name => this.formatNameForDisplay(name)}
         />
+        <div style={{flexDirection:"column" , display:"flex" , overflow:"scroll"}}>
         <svg id="svg"></svg>
+
+        </div>
       </div>
     );
   }

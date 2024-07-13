@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Dropdown } from 'semantic-ui-react'
+import { Button, Dropdown } from 'semantic-ui-react';
 
 import './TopControlGroup.css';
 import { NOTES } from '../../MusicalConstants';
@@ -14,7 +14,6 @@ class TopControlGroup extends Component {
     showNotes: undefined,
     markerToggleFn: undefined
   }
-
 
   buildRootOptions() {
     return NOTES.map(note => {
@@ -38,20 +37,20 @@ class TopControlGroup extends Component {
             className="root-dropdown"
           />
         </span>
-        <Button.Group className="sequence-buttons">
+        <Button.Group className="sequence-buttons ui buttons">
           <Button onClick={() => this.props.sequenceToggleFn(true)} active={this.props.showScales}>
             Show Scales
           </Button>
-          <Button.Or/>
+          <Button.Or />
           <Button onClick={() => this.props.sequenceToggleFn(false)} active={!this.props.showScales}>
             Show Arpeggios
           </Button>
         </Button.Group>
-        <Button.Group>
+        <Button.Group className="marker-buttons ui buttons">
           <Button onClick={() => this.props.markerToggleFn(false)} active={!this.props.showNotes}>
             Show Degrees
           </Button>
-          <Button.Or/>
+          <Button.Or />
           <Button onClick={() => this.props.markerToggleFn(true)} active={this.props.showNotes}>
             Show Notes
           </Button>
