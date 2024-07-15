@@ -1,38 +1,90 @@
-.top-control-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
+/* General button styles */
+.ui.button {
+  background-color: #000000; /* Black background color */
+  color: #FFFFFF; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.select-container {
-  flex: 1 1 auto;
-  margin: 10px;
-  min-width: 100px;
+.ui.button:hover {
+  background-color: #333333; /* Darker gray for hover */
+  color: #FFFFFF; /* Ensure text remains white */
 }
 
+.ui.button:active {
+  background-color: #666666; /* Even lighter gray for active state */
+  color: #FFFFFF; /* Ensure text remains white */
+}
+
+/* Active button state */
+.ui.button.active {
+  background-color: #999999; /* Gray background for active button */
+  color: #FFFFFF; /* Ensure text remains white */
+}
+
+/* Dropdown styles */
+.ui.selection.dropdown {
+  background-color: #000000; /* Black background color */
+  color: #FFFFFF; /* White text color */
+}
+
+.ui.selection.dropdown .menu {
+  background-color: #000000; /* Black background color */
+  color: #FFFFFF; /* White text color */
+}
+
+.ui.selection.dropdown .menu .item {
+  color: #FFFFFF; /* White text color for dropdown items */
+}
+
+.ui.selection.dropdown .menu .item:hover {
+  background-color: #333333; /* Darker gray for hover */
+  color: #FFFFFF; /* Ensure text remains white */
+}
+
+/* Selected item styles */
+.ui.selection.dropdown .menu .item.selected {
+  background-color: #000000; /* Black background color */
+  color: #FFFFFF; /* White text color for selected item */
+}
+
+.ui.selection.dropdown .menu .item.active {
+  background-color: #666666; /* Even lighter gray for active state */
+  color: #FFFFFF; /* Ensure text remains white */
+}
+
+/* Selected text styles */
+.ui.selection.dropdown .text {
+  color: #FFFFFF !important; /* White text color for selected item */
+}
+
+/* Dropdown label */
 .dropdown-label {
-  display: block;
+  color: #FFFFFF; /* White text color */
   margin-bottom: 5px;
 }
 
-.root-dropdown.ui.selection.dropdown {
-  width: 100%;
-}
-
-.sequence-buttons.ui.buttons,
-.marker-buttons.ui.buttons {
-  margin: 10px;
-  flex: 1 1 auto;
-  min-width: 200px;
-}
-
+/* Responsive design for buttons */
 @media (max-width: 600px) {
-  .select-container,
+  .top-control-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .select-container {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+
   .sequence-buttons.ui.buttons,
   .marker-buttons.ui.buttons {
-    min-width: 100%;
-    margin: 5px 0;
+    flex: 1 1 100%;
+    margin: 10px 0;
+    color: #FFFFFF;
   }
 }

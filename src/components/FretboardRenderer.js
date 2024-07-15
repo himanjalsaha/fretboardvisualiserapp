@@ -7,8 +7,8 @@ const FRET_COUNT = 13,
   STRING_COUNT = STRING_TUNINGS.length,
   STRING_START_POINT_X = 30,
   STRING_START_POINT_Y = 30,
-  STRING_SPACING = 70,
-  STRING_WIDTH = 4,
+  STRING_SPACING = 60,
+  STRING_WIDTH = 2,
   FRET_WIDTH = 6,
   FRET_START_POINT_X = STRING_START_POINT_X,
   FRET_START_POINT_Y = STRING_START_POINT_Y + FRET_WIDTH / 2,
@@ -79,7 +79,7 @@ class FretboardRenderer {
   _drawStringLine(xPosition) {
     var stringLine = this.snapInstance.line(xPosition, STRING_START_POINT_Y, xPosition, STRING_START_POINT_Y + STRING_LENGTH);
     stringLine.attr({
-      stroke: "black",
+      stroke: "white",
       strokeWidth: STRING_WIDTH
     });
     return stringLine;
@@ -104,7 +104,7 @@ class FretboardRenderer {
   _drawFretLine(yPosition) {
     var fret = this.snapInstance.line(FRET_START_POINT_X, yPosition, FRET_HEIGHT, yPosition);
     fret.attr({
-      stroke: "black",
+      stroke: "white",
       strokeWidth: FRET_WIDTH
     });
   }
